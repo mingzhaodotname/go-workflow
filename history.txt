@@ -29,3 +29,11 @@ $ bee generate appcode -driver=mysql -conn="root:000000@tcp(127.0.0.1:3306)/wfse
 $ bee run -downdoc=true --gendoc=true
 # http://localhost:8080/swagger/
 
+# Create wf-template using swagger UI
+{
+  "Description": "first workflow template",
+  "Name": "wf-template1",
+  "Version": "v1",
+  "id": 0
+}
+
