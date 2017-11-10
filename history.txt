@@ -27,3 +27,5 @@ $ bee run
 $ bee generate appcode -driver=mysql -conn="root:000000@tcp(127.0.0.1:3306)/wfserver" -level=3
  
 $ bee run -downdoc=true --gendoc=true
+# http://localhost:8080/swagger/
+
