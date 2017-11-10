@@ -1,4 +1,4 @@
-$go get github.com/beego/bee
+$ go get github.com/beego/bee
 
 $ bee version
 ______
@@ -18,5 +18,8 @@ ______
 ├── Compiler  : gc
 └── Date      : Wednesday, 8 Nov 2017
 
-$bee api wf-server
+$ bee api wf-server
 
+# Generate appcode from database "wfserver"
+$ bee generate appcode -driver=mysql -conn="root:000000@tcp(127.0.0.1:3306)/wfserver" -level=3
+ 
