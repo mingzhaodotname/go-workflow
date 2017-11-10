@@ -20,6 +20,9 @@ ______
 
 $ bee api wf-server
 
+# Run wf-server
+$ bee run
+
 # Generate appcode from database "wfserver"
 $ bee generate appcode -driver=mysql -conn="root:000000@tcp(127.0.0.1:3306)/wfserver" -level=3
  
