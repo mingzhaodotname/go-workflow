@@ -25,6 +25,11 @@ func init() {
 				&controllers.UserController{},
 			),
 		),
+		beego.NSNamespace("/wf_template",
+			beego.NSInclude(
+				&controllers.WfTemplateController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }
