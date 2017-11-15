@@ -30,6 +30,8 @@ func (c *WfTemplateController) URLMapping() {
 // @Param	body		body 	models.WfTemplate	true		"body for WfTemplate content"
 // @Success 201 {int} models.WfTemplate
 // @Failure 403 body is empty
+// @Failure 400 bad request
+// @Failure 422 invalid input
 // @router / [post]
 func (c *WfTemplateController) Post() {
 	var v models.WfTemplate
@@ -39,9 +41,11 @@ func (c *WfTemplateController) Post() {
 			c.Data["json"] = v
 		} else {
 			c.Data["json"] = err.Error()
+			c.Ctx.Output.SetStatus(400)
 		}
 	} else {
 		c.Data["json"] = err.Error()
+		c.Ctx.Output.SetStatus(422)
 	}
 	c.ServeJSON()
 }

@@ -398,8 +398,14 @@
                     "201": {
                         "description": "{int} models.WfTemplate"
                     },
+                    "400": {
+                        "description": "bad request"
+                    },
                     "403": {
                         "description": "body is empty"
+                    },
+                    "422": {
+                        "description": "invalid input"
                     }
                 }
             }
@@ -554,8 +560,7 @@
                     "type": "string"
                 },
                 "Id": {
-                    "type": "integer",
-                    "format": "int64"
+                    "type": "string"
                 },
                 "Name": {
                     "type": "string"
