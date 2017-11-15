@@ -17,7 +17,7 @@ type WfTemplate struct {
 	Description string `orm:"column(description);size(1024);null"`
 }
 
-const default_version string = "1"
+const defaultVersion string = "1"
 
 func (t *WfTemplate) TableName() string {
 	return "wf_template"
@@ -34,7 +34,7 @@ func AddWfTemplate(m *WfTemplate) (id int64, err error) {
 	m.Id = uuid.NewV4().String()
 	// Add default version
 	if len(m.Version) == 0 {
-		m.Version = default_version
+		m.Version = defaultVersion
 	}
 	id, err = o.Insert(m)
 	return
