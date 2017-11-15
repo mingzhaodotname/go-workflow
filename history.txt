@@ -37,3 +37,8 @@ $ bee run -downdoc=true --gendoc=true
   "id": 0
 }
 
+# Create wf-template using swagger UI for default version, without id (which is randomly generated uuid)
+{
+  "Description": "desc 3",
+  "Name": "name 3"
+}
