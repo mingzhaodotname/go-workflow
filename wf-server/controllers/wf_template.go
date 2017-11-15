@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"github.com/mingzhaodotname/go-workflow/wf-server/models"
-	"strconv"
+	//"strconv"
 	"strings"
 
 	"github.com/astaxie/beego"
@@ -55,8 +55,8 @@ func (c *WfTemplateController) Post() {
 // @router /:id [get]
 func (c *WfTemplateController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
-	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetWfTemplateById(id)
+	//id, _ := strconv.Atoi(idStr)
+	v, err := models.GetWfTemplateById(idStr)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -138,8 +138,8 @@ func (c *WfTemplateController) GetAll() {
 // @router /:id [put]
 func (c *WfTemplateController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
-	id, _ := strconv.Atoi(idStr)
-	v := models.WfTemplate{Id: id}
+	//id, _ := strconv.Atoi(idStr)
+	v := models.WfTemplate{Id: idStr}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateWfTemplateById(&v); err == nil {
 			c.Data["json"] = "OK"
@@ -161,8 +161,8 @@ func (c *WfTemplateController) Put() {
 // @router /:id [delete]
 func (c *WfTemplateController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
-	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteWfTemplate(id); err == nil {
+	//id, _ := strconv.Atoi(idStr)
+	if err := models.DeleteWfTemplate(idStr); err == nil {
 		c.Data["json"] = "OK"
 	} else {
 		c.Data["json"] = err.Error()

@@ -7,14 +7,17 @@ import (
 	"strings"
 
 	"github.com/astaxie/beego/orm"
+	"github.com/satori/go.uuid"
 )
 
 type WfTemplate struct {
-	Id          int    `orm:"column(id);pk"`
+	Id          string    `orm:"column(id);pk"`
 	Name        string `orm:"column(name);size(64)"`
 	Version     string `orm:"column(version);size(64);null"`
 	Description string `orm:"column(description);size(1024);null"`
 }
+
+const default_version string = "1"
 
 func (t *WfTemplate) TableName() string {
 	return "wf_template"
@@ -28,13 +31,18 @@ func init() {
 // last inserted Id on success.
 func AddWfTemplate(m *WfTemplate) (id int64, err error) {
 	o := orm.NewOrm()
+	m.Id = uuid.NewV4().String()
+	// Add default version
+	if len(m.Version) == 0 {
+		m.Version = default_version
+	}
 	id, err = o.Insert(m)
 	return
 }
 
 // GetWfTemplateById retrieves WfTemplate by Id. Returns error if
 // Id doesn't exist
-func GetWfTemplateById(id int) (v *WfTemplate, err error) {
+func GetWfTemplateById(id string) (v *WfTemplate, err error) {
 	o := orm.NewOrm()
 	v = &WfTemplate{Id: id}
 	if err = o.Read(v); err == nil {
@@ -138,7 +146,7 @@ func UpdateWfTemplateById(m *WfTemplate) (err error) {
 
 // DeleteWfTemplate deletes WfTemplate by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteWfTemplate(id int) (err error) {
+func DeleteWfTemplate(id string) (err error) {
 	o := orm.NewOrm()
 	v := WfTemplate{Id: id}
 	// ascertain id exists in the database
