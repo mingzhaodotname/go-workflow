@@ -2,7 +2,7 @@
 Workflow in Golang
 
 # TODOs
-* generate uuid when creating workflow template
+* Test POST template API with different error code
 * add more fields to template, e.g.
   * create time, user
   * update time, user
